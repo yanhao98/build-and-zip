@@ -17,7 +17,14 @@ package.json
 }
 ```
 
+index.html
+```html
+<html data-build-time="<%- VUE_APP_BUILD_TIME %>">
+<html data-build-time="%VITE_BUILD_TIME%">
+```
+
 .gitignore
 ```
 dist-zip/
 ```
+

@@ -97,6 +97,7 @@ execSync(command, {
     env: {
         ...process.env,
         VITE_BUILD_TIME: BUILD_TIME,
+        VUE_APP_BUILD_TIME: BUILD_TIME,
     }
 });
 

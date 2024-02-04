@@ -76,13 +76,14 @@ function openFolder(path: string) {
 
 const cwd = process.cwd();
 const packageJsonPath = `${cwd}/package.json`;
-const name = require(packageJsonPath).name;
-if (name === 'build-and-zip') process.exit(0);
-
 if (!fs.existsSync(packageJsonPath)) {
     console.error(`File not found: ${packageJsonPath}`);
     process.exit(1);
 }
+const name = require(packageJsonPath).name;
+if (name === 'build-and-zip') process.exit(0);
+
+const BUILD_TIME = getCurrentFormattedTime();
 
 const argv = yargs()
     .option('script', {
@@ -93,14 +94,17 @@ const command = `npm run ${argv.script}`;
 execSync(command, {
     stdio: 'inherit',
     cwd,
+    env: {
+        ...process.env,
+        VITE_BUILD_TIME: BUILD_TIME,
+    }
 });
 
 const distZipPath = `${cwd}/dist-zip`;
 if (!fs.existsSync(distZipPath)) {
     fs.mkdirSync(distZipPath);
 }
-
-const filename = `${name}_${getCurrentFormattedTime()}.zip`;
+const filename = `${name}_${BUILD_TIME}.zip`;
 await zipFolderAsync(`${cwd}/dist`, `${distZipPath}/${filename}`);
 console.log(`Zip file created: ${distZipPath}/${filename}`);
 openFolder(distZipPath);

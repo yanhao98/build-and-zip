@@ -15,6 +15,10 @@
   "bin": {
     "build-and-zip": "index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yanhao98/build-and-zip"
+  },
   "devDependencies": {
     "@types/archiver": "^6.0.2",
     "@types/bun": "latest",

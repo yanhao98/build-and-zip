@@ -15,3 +15,8 @@ package.json
   }
 }
 ```
+
+.gitignore
+```
+dist-zip/
+```

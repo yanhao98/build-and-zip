@@ -1,0 +1,25 @@
+name: Publish Package
+
+permissions:
+  id-token: write
+  # contents: write
+
+on:
+  push:
+    # tags:
+    #   - v*
+
+jobs:
+  publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - run: bun install
+      - run: bun run build
+
+      - name: Publish to npm
+        run: npm publish --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true

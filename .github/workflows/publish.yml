@@ -6,8 +6,8 @@ permissions:
 
 on:
   push:
-    # tags:
-    #   - v*
+    tags:
+      - v*
 
 jobs:
   publish-npm:
@@ -19,7 +19,7 @@ jobs:
       - run: bun run build
 
       - name: Publish to npm
-        run: npm publish --dry-run
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           NPM_CONFIG_PROVENANCE: true

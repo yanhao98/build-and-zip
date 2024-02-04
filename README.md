@@ -1,5 +1,10 @@
 # build-and-zip
 
+## install
+```bash
+pnpm add @yanhao98/build-and-zip -D
+```
+
 package.json
 ```
 {

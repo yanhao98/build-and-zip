@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "bun build ./index.ts --outfile ./index.js --target node --external yargs --external archiver",
-    "build:watch": "bun run build -- --watch",
-    "prepublishOnly": "npm run build"
+    "build:watch": "bun run build -- --watch"
   },
   "files": [
     "index.js"
@@ -17,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yanhao98/build-and-zip"
+    "url": "https://github.com/yanhao98/build-and-zip.git"
   },
   "devDependencies": {
     "@types/archiver": "^6.0.2",

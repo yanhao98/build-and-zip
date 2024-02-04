@@ -6,8 +6,8 @@ permissions:
 
 on:
   push:
-    # tags:
-    #   - v*
+    tags:
+      - v*
 
 jobs:
   publish-npm:

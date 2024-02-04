@@ -5,6 +5,7 @@
 pnpm add @yanhao98/build-and-zip -D
 ```
 
+## usage
 package.json
 ```
 {

@@ -61,8 +61,12 @@ function openFolder(path: string) {
         // case 'linux': // Linux
         //     command = `xdg-open "${path}"`;
         //     break;
-        default:
-            throw new Error(`Platform ${platform} is not supported`);
+        // default:
+        //     throw new Error(`Platform ${platform} is not supported`);
+    }
+    if (!command) {
+        console.error(`[openFolder] Platform ${platform} is not supported`);
+        return;
     }
 
     exec(command, (error) => {

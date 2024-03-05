@@ -19,6 +19,10 @@ const argv = yargs()
     .option('script', {
         default: 'build',
     })
+    .option('open', {
+        type: 'boolean',
+        default: true,
+    })
     .parseSync(process.argv);
 
 const command = `npm run ${argv.script}`;
@@ -103,4 +107,6 @@ if (!fs.existsSync(distZipPath)) {
 const filename = `${pkgName}_${BUILD_TIME}.zip`;
 await zipFolderAsync(`${cwd}/dist`, `${distZipPath}/${filename}`);
 console.log(`Zip file created: ${distZipPath}/${filename}`);
-openFolder(distZipPath);
+if (argv.open) {
+    openFolder(distZipPath);
+}

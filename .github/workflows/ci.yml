@@ -1,0 +1,27 @@
+name: Test
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - name: Use Node.js v18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org/
+
+      - run: bun install
+      - run: bun run build
+
+      - name: Test
+        run: bun test
+
+      - name: Publish Dry Run
+        run: npm publish --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true

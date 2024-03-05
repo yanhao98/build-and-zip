@@ -1,7 +1,7 @@
 {
   "name": "@yanhao98/build-and-zip",
   "description": "A simple CLI tool to build and zip a project",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "module": "index.ts",
   "type": "module",
   "scripts": {

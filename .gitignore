@@ -175,3 +175,4 @@ dist
 .DS_Store
 
 index.js
+dist-zip

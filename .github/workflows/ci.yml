@@ -19,9 +19,17 @@ jobs:
 
       - run: bun install
       - run: bun run build
+      
+      # - uses: szenius/set-timezone@v1.2
+      #   with:
+      #     timezoneLinux: "Asia/Singapore"
+      #     timezoneMacos: "Asia/Singapore"
+      #     timezoneWindows: "Singapore Standard Time"
 
       - name: Test
         run: bun test
+        env:
+          TZ: "Asia/Shanghai"
 
       - name: Publish Dry Run
         run: npm publish --dry-run

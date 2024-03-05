@@ -4,10 +4,6 @@ import { exec, execSync } from 'node:child_process';
 import fs from "node:fs";
 import os from 'node:os';
 import yargs from "yargs";
-import timezone from 'dayjs/plugin/timezone';
-
-
-
 
 const cwd = process.cwd();
 const packageJsonPath = `${cwd}/package.json`;
@@ -17,7 +13,13 @@ if (!fs.existsSync(packageJsonPath)) {
 }
 let pkgName = require(packageJsonPath).name;
 pkgName = pkgName.replace('@', '').replace('/', '-');
-const BUILD_TIME = dayjs.extend(timezone).tz('Asia/Shanghai').format('YYYYMMDD_HHmmss');
+
+// import utc from 'dayjs/plugin/utc';
+// import timezone from 'dayjs/plugin/timezone';
+// dayjs.extend(utc)
+// dayjs.extend(timezone)
+// dayjs.tz.setDefault('Asia/Shanghai');
+const BUILD_TIME = dayjs().format('YYYYMMDD_HHmmss');
 
 const argv = yargs()
     .option('script', {

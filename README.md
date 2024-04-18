@@ -1,11 +1,11 @@
 # build-and-zip
 
-## install
+## Install
 ```bash
 pnpm add @yanhao98/build-and-zip -D
 ```
 
-## usage
+## Usage
 package.json
 ```
 {
@@ -28,3 +28,6 @@ index.html
 dist-zip/
 ```
 
+## Links
+
+- https://github.com/vuejs/devtools/blob/main/extension-zips.js
